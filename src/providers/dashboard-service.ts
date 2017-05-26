@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod, HttpModule } from '@angular/http';
-import { headerCaseNormalise } from '../../node_modules/header-case-normalizer';
 import { Utils } from '../utility/Utils';
 import { Logger } from '../utility/Logger';
 import { LoginResponse } from '../Models/auth-models';

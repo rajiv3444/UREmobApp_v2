@@ -12,10 +12,10 @@ import { SideMenuPage } from '../pages/side-menu/side-menu';
 
 //services
 import { AuthService } from '../providers/auth-service';
+import { DashBoardService } from '../providers/dashboard-service';
 //import { AuthGuard } from '../Guards/auth-guard';
 //import { AssetsService } from '../providers/assets-service';
 //import { BackupsService } from '../providers/backups-service';
-//import { DashBoardService } from '../providers/dashboard-service';
 //import { JobsService } from '../providers/jobs-service';
 //import { AlertsService } from '../providers/alerts-service';
 import { Utils } from '../utility/Utils';
@@ -47,9 +47,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DashBoardMainPage
   ],
   providers: [
-    AuthService,
-    Utils,
     Logger,
+    Utils,
+    AuthService,
+    DashBoardService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

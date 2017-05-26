@@ -1,5 +1,11 @@
 <ion-header>
-    <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+    <!--<app-header [headerTitle]="pageTitle">loaing header...</app-header>-->
+   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>    
@@ -50,7 +56,7 @@
                 <th>Total Size</th>
                 <th>Currrent Free Size</th>
                 <th>Usage</th>
-            </tr>
+            </tr>            
             <tr *ngFor="let st of storage">
                 <td>
                     {{st.name}}
@@ -68,24 +74,4 @@
             </tr>
         </table>
     </ion-grid>
-
-    <!--<ion-list>
-        <ion-item>
-            <button ion-button class="" type="button" routerLink="/assets">Get Assets</button>
-            <button ion-button class="" type="button" routerLink="/backups">Get Backups</button>
-            <button ion-button class="" type="button" routerLink="/test">Get Else</button>
-        </ion-item>
-    </ion-list>
-
-    <ion-list>
-        <div *ngFor="let main of mains">
-            <ion-item let i="index" text-wrap (click)="toggleMain(main)" [ngClass]="{active: isMainShown(main)}">
-                <ion-icon color="primary" [name]="isMainShown(main) ? 'remove-circle' : 'add-circle'"></ion-icon>
-                {{main.name}}
-                <ion-item *ngFor="let item of main.items" let i="index-0" [hidden]="!isMainShown(main)">
-                    <div routerLink="{{item.routerLink}}">{{item.subName}}</div>
-                </ion-item>
-            </ion-item>
-        </div>
-    </ion-list>-->
 </ion-content>

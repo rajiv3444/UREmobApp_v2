@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { Utils } from '../../utility/Utils';
+import { DashBoardMainPage } from '../../pages/dashboard/dashboard-main';
 
 @IonicPage()
 @Component({
@@ -15,6 +16,8 @@ export class LoginPage {
   public displayResult: any[] = [];
   credentials = { username: '', password: '' };
   constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService, private utils: Utils) {
+    this.credentials.username = 'root';
+    this.credentials.password = 'unitrends1';
   }
 
 
@@ -34,13 +37,14 @@ export class LoginPage {
   }
 
   Login() {
-    this.authService.DoLogin(this.credentials.username, this.credentials.password)
-      .subscribe((resp) => {
-        this.OnLoginSuccess(resp);
-      },
-      err => {
-        this.OnLoginFailure();
-      });
+    this.navCtrl.push(DashBoardMainPage);
+    // this.authService.DoLogin(this.credentials.username, this.credentials.password)
+    //   .subscribe((resp) => {
+    //     this.OnLoginSuccess(resp);
+    //   },
+    //   err => {
+    //     this.OnLoginFailure();
+    //   });
   }
   OnLoginSuccess(resp) {
     console.log('login success');
@@ -51,9 +55,9 @@ export class LoginPage {
 
     if (authToken != '') {
       this.utils._isAuthentic = true;
-      console.log('login success');
       this.loginStatus = 'Login success';
       //this.router.navigateByUrl('/dashboardmain');
+      this.navCtrl.push(DashBoardMainPage);
     }
     else {
       this.OnLoginFailure();
