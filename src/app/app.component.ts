@@ -14,7 +14,7 @@ export class UreApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -22,7 +22,12 @@ export class UreApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Login', component: LoginPage },
-      { title: 'Dashboard', component: DashBoardMainPage }
+      { title: 'Dashboard', component: DashBoardMainPage },
+      { title: 'Assets', component: LoginPage },
+      { title: 'Jobs', component: LoginPage },
+      { title: 'Alerts', component: LoginPage },
+      { title: 'Logout', component: LoginPage }
+      
     ];
 
   }
