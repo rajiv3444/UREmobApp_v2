@@ -1,0 +1,91 @@
+<ion-header>
+    <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+</ion-header>
+
+<ion-content padding>    
+    <app-side-menu>side menu loading...</app-side-menu>    
+    <ion-grid style="background-color:#c7e4f9; text-align: left; padding: 0 10px 10px">
+        <ion-row>
+            <ion-col>
+                <h6>Backup Summary</h6>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col style="border: 2px solid darkgray;height: 70px;text-align: center;">
+                <ion-label>
+                    <ion-badge color="danger">{{backupSummary.errorsCount}}</ion-badge>
+                </ion-label>
+                <ion-label>
+                    Errors
+                </ion-label>
+            </ion-col>
+            <ion-col style="border: 2px solid darkgray;height: 70px;text-align: center; margin:0 3px">
+                <ion-label>
+                    <ion-badge color="primary">{{backupSummary.notProtectedCount}}</ion-badge>
+                </ion-label>                
+                <ion-label>
+                    Not Protected
+                </ion-label>
+            </ion-col>
+            <ion-col style="border: 2px solid darkgray;height: 70px;text-align: center;">
+                <ion-label>
+                    <ion-badge color="secondary">{{backupSummary.protectedCount}}</ion-badge>
+                </ion-label>   
+                <ion-label>
+                    Protected
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <br />
+    <!--Storage-->
+
+    <ion-grid style="background-color:#c7e4f9; text-align: left; padding: 0 10px 10px">
+        <h6>Storage</h6>
+
+        <table border="1" style="border: 1px solid darkgray; width: 100%;">
+            <tr style="text-align: center;">
+                <th>Name</th>
+                <th>Total Size</th>
+                <th>Currrent Free Size</th>
+                <th>Usage</th>
+            </tr>
+            <tr *ngFor="let st of storage">
+                <td>
+                    {{st.name}}
+                    <!--({{st.system_name}})-->
+                </td>
+                <td>
+                    {{st.mb_size/1024/1024 | number : '1.2-2'}} TB
+                </td>
+                <td>
+                    {{st.mb_free/1024/1024 | number : '1.2-2'}} ?? TB
+                </td>
+                <td>
+                    {{st.usage}}
+                </td>
+            </tr>
+        </table>
+    </ion-grid>
+
+    <!--<ion-list>
+        <ion-item>
+            <button ion-button class="" type="button" routerLink="/assets">Get Assets</button>
+            <button ion-button class="" type="button" routerLink="/backups">Get Backups</button>
+            <button ion-button class="" type="button" routerLink="/test">Get Else</button>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <div *ngFor="let main of mains">
+            <ion-item let i="index" text-wrap (click)="toggleMain(main)" [ngClass]="{active: isMainShown(main)}">
+                <ion-icon color="primary" [name]="isMainShown(main) ? 'remove-circle' : 'add-circle'"></ion-icon>
+                {{main.name}}
+                <ion-item *ngFor="let item of main.items" let i="index-0" [hidden]="!isMainShown(main)">
+                    <div routerLink="{{item.routerLink}}">{{item.subName}}</div>
+                </ion-item>
+            </ion-item>
+        </div>
+    </ion-list>-->
+</ion-content>

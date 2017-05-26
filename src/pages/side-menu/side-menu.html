@@ -1,0 +1,11 @@
+<ion-menu side="left" [content]="content">
+  <ion-list>
+    <!--<button ion-item routerLink="/backups"> <ion-icon name="cloud-download"></ion-icon> Backup Summary</button>-->
+    <button ion-item routerLink="/test"> <ion-icon name="filing"></ion-icon> Storage</button>
+    <button ion-item routerLink="/assets"><ion-icon name="pint"></ion-icon> Assets</button>
+    <button ion-item routerLink="/jobs"><ion-icon name="paper"></ion-icon> Jobs</button>
+    <button ion-item routerLink="/alerts"><ion-icon name="alert"></ion-icon> Alerts</button>
+    <button ion-item routerLink="/login"><ion-icon name="log-out"></ion-icon> Logout</button>
+  </ion-list>
+</ion-menu>
+<ion-nav #content></ion-nav>
