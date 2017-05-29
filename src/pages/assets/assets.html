@@ -1,0 +1,48 @@
+<ion-header>
+    <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+</ion-header>
+<ion-content padding>
+    <!--<app-side-menu>side menu loading...</app-side-menu>-->
+    <ion-item>
+        <ion-grid class="ion-grid-bg">
+                <ion-row class="ion-row-bg">
+                    <ion-col col-2>#</ion-col>
+                    <ion-col col-6>Name</ion-col>
+                    <ion-col col-4>IP Address</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let item of displayAssets; let k = index; let isOdd=odd; let isEven=even"  [class.even]="isEven">  
+                    <ion-col col-2>
+                        {{k+1}}
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-row>
+                            <ion-col>
+                                <ion-icon color="primary" [name]="item.children == undefined || isAssetsShown(item) ? 'remove' : 'add'" (click)="toggleAssets(item)"
+                                    [ngClass]="{active: isAssetsShown(item)}"></ion-icon>
+                                {{item.name}}
+                            </ion-col>
+                        </ion-row>
+                        <ion-row *ngFor="let childrenIitem of item.children; let j = index; let isOdd=odd; let isEven=even"  [class.even]="isEven" [class.odd]="isOdd"  [hidden]="!isAssetsShown(item)" (click)="toggleChildren(childrenIitem)"
+                            [ngClass]="{active: isChildrenShown(childrenIitem)}">
+                            <ion-col col-auto></ion-col>
+
+                            <ion-col col-auto>
+                                <ion-icon color="primary" [name]="childrenIitem.children.length < 1 || isChildrenShown(childrenIitem) ? 'remove' : 'add'"></ion-icon>
+                            </ion-col>
+                            <ion-col>
+                                {{childrenIitem.description}}
+                            </ion-col>
+                            <ion-row *ngFor="let childrenitem of childrenIitem.children; let i = index; let isOdd=odd; let isEven=even"  [class.even]="isEven" [class.odd]="isOdd" [hidden]="!isChildrenShown(childrenIitem)">
+                                <ion-col col-2></ion-col>
+                                <ion-col col-10 text-wrap >
+                                    {{childrenitem.name}}
+                                </ion-col>
+                            </ion-row>
+
+                        </ion-row>
+                    </ion-col>
+                    <ion-col col-4>{{item.ip}}</ion-col>
+                </ion-row>
+            </ion-grid>
+    </ion-item>   
+</ion-content>

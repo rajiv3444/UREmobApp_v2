@@ -1,12 +1,24 @@
 <ion-header>
-  <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+  <ion-navbar>
+    <!--<button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+  </button>-->
+    <ion-title> {{pageTitle}}</ion-title>
+  </ion-navbar>
 </ion-header>
+
+<!--<ion-header>  
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>-->
 
 
 <ion-content padding>
-  <app-side-menu>side menu loading...</app-side-menu>
   <ion-list>
-
     <ion-item>
       <ion-label stacked>Username</ion-label>
       <ion-input type="text" placeholder="Enter your username" [(ngModel)]="credentials.username"></ion-input>
@@ -18,14 +30,10 @@
     </ion-item>
 
     <ion-item>
-      <button ion-button class="" type="submit" (click)="Login()">
-        <ion-icon name="log-in"></ion-icon>
+      <button ion-button block class="" type="submit" (click)="Login()">
+        <!--<ion-icon name="log-in"></ion-icon>-->
+         Login
         </button> {{loginStatus}}
     </ion-item>
-
-    <ion-item>
-      <!--<button ion-button class="" type="button" (click)="GetBackup()">Get Backup </button>-->
-    </ion-item>
-    {{backup}}
   </ion-list>
 </ion-content>

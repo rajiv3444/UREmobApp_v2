@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
 import { DashBoardService } from '../../providers/dashboard-service';
 //import { Utils } from '../../utility/Utils';
 import { Logger } from '../../utility/Logger';
