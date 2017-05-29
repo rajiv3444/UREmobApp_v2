@@ -10,7 +10,7 @@ import { HeaderPage } from '../pages/header/header';
 import { SideMenuPage } from '../pages/side-menu/side-menu';
 import { DashBoardMainPage } from '../pages/dashboard/dashboard-main';
 import { AssetsPage } from '../pages/assets/assets';
-//import { JobsPage } from '../pages/jobs/jobs';
+import { JobsPage } from '../pages/jobs/jobs';
 //import { AlertsPage } from '../pages/alerts/alerts';
 //import { BackupsPage } from '../pages/backups/backups';
 //import { HeaderModelPage } from '../pages/header/header-modal-page';
@@ -26,9 +26,9 @@ import { PageNotFoundComponent } from '../pages/others/not-found';
 import { AuthService } from '../providers/auth-service';
 import { DashBoardService } from '../providers/dashboard-service';
 import { AssetsService } from '../providers/assets-service';
+import { JobsService } from '../providers/jobs-service';
 //import { AuthGuard } from '../Guards/auth-guard';
 //import { BackupsService } from '../providers/backups-service';
-//import { JobsService } from '../providers/jobs-service';
 //import { AlertsService } from '../providers/alerts-service';
 import { Utils } from '../utility/Utils';
 import { Logger } from '../utility/Logger';
@@ -45,7 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SideMenuPage,
     DashBoardMainPage,
     AssetsPage,
-
+    JobsPage,
     PageNotFoundComponent
   ],
   imports: [
@@ -61,7 +61,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SideMenuPage,
     DashBoardMainPage,
     AssetsPage,
-
+    JobsPage,
     PageNotFoundComponent
   ],
   providers: [
@@ -69,10 +69,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Utils,
     AuthService,
     AssetsService,
+    JobsService,
     DashBoardService,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

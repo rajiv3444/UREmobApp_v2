@@ -1,0 +1,53 @@
+<ion-header>
+  <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+</ion-header>
+
+<ion-content padding>
+  <app-side-menu>side menu loading...</app-side-menu>
+  <ion-grid  style="text-align: left; padding: 0 10px 10px">
+    <h6>Active Jobs</h6>    
+    <table border="1" style="border: 1px solid darkgray; width: 100%;">
+      <tr style="text-align: center;">
+        <th>#</th>
+        <th>Name</th>
+        <th>Asset</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th>Duraion</th>
+        <!--<th>Details</th>-->
+      </tr>
+      <tr [hidden]="isActiveJobFound">
+        <td colspan="6"><span class="textRed"> There is no record found </span> </td>
+      </tr>
+      <tr *ngFor="let job of activeJobs; let i=index;" (click)="AlertJobDetails(job)">
+        <td>
+          {{i+1}}
+        </td>
+        <td>
+          <!--{{job.name}}-->
+        </td>
+        <td>
+          {{job.asset_name}}
+        </td>
+        <td>
+          <ion-label [color]="job.status == 'Error' ? 'danger' : 'black'">
+            {{job.status}}
+          </ion-label>
+        </td>
+        <td>
+          {{job.type}}
+        </td>
+        <td>
+          {{job.duration}}
+        </td>
+        <!--<td>
+          <button ion-button (click)="AlertJobDetails(job)">
+          <ion-icon name="paper"></ion-icon>
+            </button>
+
+        </td>-->
+      </tr>
+    </table>
+
+  </ion-grid>
+</ion-content>

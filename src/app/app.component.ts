@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { DashBoardMainPage } from '../pages/dashboard/dashboard-main';
 import { AssetsPage } from '../pages/assets/assets';
+import { JobsPage } from '../pages/jobs/jobs';
 import { PageNotFoundComponent } from '../pages/others/not-found';
 
 @Component({
@@ -25,7 +26,7 @@ export class UreApp {
      this.pages = [      
       { title: 'Dashboard', component: DashBoardMainPage },
       { title: 'Assets', component: AssetsPage },
-      { title: 'Jobs', component: PageNotFoundComponent },
+      { title: 'Jobs', component: JobsPage },
       { title: 'Alerts', component: PageNotFoundComponent },
       { title: 'Logout', component: LoginPage }
       
