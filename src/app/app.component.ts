@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { DashBoardMainPage } from '../pages/dashboard/dashboard-main';
 import { AssetsPage } from '../pages/assets/assets';
+import { AlertsPage } from '../pages/alerts/alerts';
 import { JobsPage } from '../pages/jobs/jobs';
 import { PageNotFoundComponent } from '../pages/others/not-found';
 
@@ -27,9 +28,8 @@ export class UreApp {
       { title: 'Dashboard', component: DashBoardMainPage },
       { title: 'Assets', component: AssetsPage },
       { title: 'Jobs', component: JobsPage },
-      { title: 'Alerts', component: PageNotFoundComponent },
-      { title: 'Logout', component: LoginPage }
-      
+      { title: 'Alerts', component: AlertsPage },
+      { title: 'Logout', component: LoginPage }      
     ];
 
   }

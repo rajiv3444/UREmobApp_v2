@@ -6,34 +6,27 @@
     <ion-title> {{pageTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
-
-<!--<ion-header>  
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Dashboard</ion-title>
-  </ion-navbar>
-</ion-header>-->
-
-
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text" placeholder="Enter your username" [(ngModel)]="credentials.username"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Enter your password" [(ngModel)]="credentials.password"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <button ion-button block class="" type="submit" (click)="Login()">
+    <form [formGroup]="form" novalidate>
+      <ion-item>
+        <ion-label stacked>Username</ion-label>
+        <ion-input type="text" placeholder="Enter your username" formControlName="username" [(ngModel)]="credentials.username" ></ion-input>
+      </ion-item>
+      <div *ngIf="form.controls['username'].hasError('required') && form.controls['username'].touched" class="textRed">* Username is required</div>
+      <div *ngIf="form.controls['username'].hasError('minlength')&& form.controls['username'].touched" class="textRed">* Length must be greater than 2</div>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" placeholder="Enter your password" formControlName="password" [(ngModel)]="credentials.password"></ion-input>
+      </ion-item>
+      <div *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="textRed">* Password is required</div>
+      <div *ngIf="form.controls['password'].hasError('minlength')&& form.controls['password'].touched" class="textRed">* Length must be greater than 2</div>
+      <ion-item>
+        <button ion-button block class="" type="submit" [disabled]="!form.valid" (click)="Login()">
         <!--<ion-icon name="log-in"></ion-icon>-->
          Login
         </button> {{loginStatus}}
-    </ion-item>
+      </ion-item>
+    </form>
   </ion-list>
 </ion-content>

@@ -1,0 +1,15 @@
+<ion-header>    
+    <app-header-modal-page [headerTitle]="pageTitle">Header loading...</app-header-modal-page>    
+</ion-header>
+<ion-content>    
+        <ion-item>
+            <ion-row class="ion-row-bg">
+                <ion-col col-5>Key</ion-col>
+                <ion-col col-7>Value</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let item of displayData; let k = index">
+                <ion-col col-5 text-wrap>{{item.key}}</ion-col>
+                <ion-col col-7 text-wrap>{{item.value}}</ion-col>
+            </ion-row>
+        </ion-item>    
+</ion-content>

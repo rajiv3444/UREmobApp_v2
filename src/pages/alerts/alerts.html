@@ -1,0 +1,31 @@
+<ion-header>
+    <app-header [headerTitle]="pageTitle">loaing header...</app-header>
+</ion-header>
+<ion-content padding>
+    <app-side-menu>side menu loading...</app-side-menu>
+    <ion-item>
+        <ion-grid class="ion-grid-bg">
+                <ion-row class="ion-row-bg">
+                    <ion-col col-1>#</ion-col>
+                    <ion-col col-3>Time</ion-col>
+                    <ion-col col-3>Severity</ion-col>
+                    <ion-col col-5>Message</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let item of displayAlerts; let k = index; let isOdd=odd; let isEven=even"  [class.even]="isEven" (click)="OpenModalPage(item)">  
+                    <ion-col col-1 *ngIf="displayAlerts">
+                        {{k+1}}
+                    </ion-col>
+                    <ion-col col-3 text-wrap>
+                        {{item.created | date:'short'}}
+                    </ion-col>
+                    <ion-col col-3 text-wrap>
+                        {{item.severity}}
+                    </ion-col>
+                    <ion-col col-5 text-wrap >
+                        {{item.message}}</ion-col>
+                </ion-row>
+            </ion-grid>
+    </ion-item>
+  
+</ion-content>
+<!--<nav-footer>loading nav footer</nav-footer>-->

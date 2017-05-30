@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderPage {
 @Input() headerTitle: string;
- constructor() {    
-  }
+ constructor() {  }
 
 }

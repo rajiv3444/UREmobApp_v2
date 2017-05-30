@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { Utils } from '../../utility/Utils';
 import { Logger } from '../../utility/Logger';
@@ -12,25 +13,30 @@ import { AssetsPage } from '../../pages/assets/assets';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-   @ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav) nav: Nav;
   pageTitle: string = 'Login';
   backup: any;
   loginStatus: string;
   public displayResult: any[] = [];
   credentials = { username: '', password: '' };
+  form: FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService,
-    private utils: Utils, private logger: Logger, private alertController: AlertController) {
+    private utils: Utils, private logger: Logger, private alertController: AlertController, private formBuilder: FormBuilder) {
     this.DoLogout();
     this.utils._isAuthentic = false;
     this.loginStatus = '';
     this.credentials.username = 'root';
     this.credentials.password = 'unitrends1';
+
+    this.form = formBuilder.group({
+      username: ['', Validators.compose([Validators.minLength(3), Validators.maxLength(30), Validators.required])],
+      password: ['', Validators.compose([Validators.minLength(3), Validators.maxLength(30), Validators.required])],
+    });
   }
-  
+
   ngOnInit() {
     this.logger.LogInfo('LoginPage: ngOnInit');
   }
-
 
   DoLogout() {
     this.utils.CleanAuthDetails();
@@ -56,7 +62,7 @@ export class LoginPage {
       this.loginStatus = 'Login success';
       //this.router.navigateByUrl('/dashboardmain');
       //this.nav.push(DashBoardMainPage);      
-      this.navCtrl.setRoot(DashBoardMainPage);      
+      this.navCtrl.setRoot(DashBoardMainPage);
       //this.navCtrl.setRoot(AssetsPage);      
     }
     else {
@@ -75,7 +81,7 @@ export class LoginPage {
   ALertLoginFailure() {
     let alert = this.alertController.create({
       title: 'Login',
-      message: 'Login failed, Please verify uername and password.',
+      message: 'Login failed, Please verify username and password.',
       buttons: ['Ok']
     });
     alert.present();
