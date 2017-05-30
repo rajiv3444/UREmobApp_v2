@@ -14,7 +14,7 @@ export class AuthService {
   
   DoLogin(username: string, password: string): Observable<any> {    
     let body = JSON.stringify({ username, password });  
-    let apiIp = '10.102.48.91';      //192.168.8.160
+    let apiIp = this.utils.GetUREHostedApiIp();
     return this.http.post('http://'+apiIp+'/api/login', body, { headers: this.utils.GetEmptyHeader() });
   } 
 }

@@ -3,17 +3,22 @@ import { Injectable } from '@angular/core';
 //import { GenericData } from '../Models/common-models';
 //import { LoginPage } from '../Pages/Login/Login';
 
-export const AUTHTOKEN:string = 'authToken';
+export const AUTHTOKEN: string = 'authToken';
 
 @Injectable()
-export class Utils {    
+export class Utils {
     _isAuthentic: boolean;
     constructor() {
         this._isAuthentic = false;
     }
     FormateUrl(api: string) {
-        let wrapperApiUrlPrefix = 'http://localhost:54434';// "http://192.168.5.60:54434";
+        let wrapperApiUrlPrefix = "http://192.168.5.60:54434";
+        //let wrapperApiUrlPrefix = 'http://localhost:54434';
         return wrapperApiUrlPrefix + "/api/GenericApi/TestApi?api=" + api;
+    }
+    GetUREHostedApiIp() {
+        return '192.168.8.160';
+        //return '10.102.48.91';            
     }
 
     GetEmptyHeader() {
