@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { NavParams} from 'ionic-angular';
 
 @Component({
     selector: 'alert-page',
     templateUrl: 'alert-modal.html'
 })
 export class AlertsModalPage implements OnInit {
-    pageTitle: string = 'Description';
+    pageTitle: string = 'Alert Detail';
     displayData: any[] = [];
-    constructor(private navParams: NavParams, public viewCtrl: ViewController) {
+    constructor(private navParams: NavParams) {
     }
 
     ngOnInit() {
