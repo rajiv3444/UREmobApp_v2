@@ -36,6 +36,11 @@ export class LoginPage {
 
   ngOnInit() {
     this.logger.LogInfo('LoginPage: ngOnInit');
+    this.utils.IsAuthenticated();    
+    if(this.utils._isAuthentic)    
+    {
+      this.navCtrl.setRoot(DashBoardMainPage);
+    }
   }
 
   DoLogout() {
@@ -59,11 +64,8 @@ export class LoginPage {
     if (authToken != '' && authToken != undefined) {
       this.utils.SetAuthTokenLocal(authToken);
       this.utils._isAuthentic = true;
-      this.loginStatus = 'Login success';
-      //this.router.navigateByUrl('/dashboardmain');
-      //this.nav.push(DashBoardMainPage);      
-      this.navCtrl.setRoot(DashBoardMainPage);
-      //this.navCtrl.setRoot(AssetsPage);      
+      this.loginStatus = 'Login success';      
+      this.navCtrl.setRoot(DashBoardMainPage);      
     }
     else {
       this.OnLoginFailure();
@@ -73,8 +75,8 @@ export class LoginPage {
   OnLoginFailure() {
     this.utils._isAuthentic = false;
     this.logger.LogError('login failed');
-    this.loginStatus = 'Login failed';
-    //this.router.navigateByUrl('/login');
+    this.loginStatus = 'Login failed';    
+    this.navCtrl.setRoot(LoginPage);
     this.ALertLoginFailure();
   }
 

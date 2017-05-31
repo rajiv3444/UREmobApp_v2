@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
 import { DashBoardService } from '../../providers/dashboard-service';
-//import { Utils } from '../../utility/Utils';
+import { LoginPage } from '../../pages/login/login';
+import { Utils } from '../../utility/Utils';
 import { Logger } from '../../utility/Logger';
 
 @Component({
@@ -9,22 +10,28 @@ import { Logger } from '../../utility/Logger';
     templateUrl: 'dashboard-main.html'
 })
 export class DashBoardMainPage {
-    pageTitle:string = 'Dashboard';
+    pageTitle: string = 'Dashboard';
     shownMain: any;
-    backupSummary: {errorsCount:number,notProtectedCount:number, protectedCount:number };
-    storage: any = [];   
-  
-    constructor(private dashBoardService: DashBoardService, private logger: Logger) {
+    backupSummary: { errorsCount: number, notProtectedCount: number, protectedCount: number };
+    storage: any = [];
+
+    constructor(private dashBoardService: DashBoardService, private logger: Logger, private utils: Utils, public navCtrl: NavController) {
         this.backupSummary = {
             errorsCount: 0,
             notProtectedCount: 0,
             protectedCount: 0
         };
-
         this.GetSummaryCounts();
         this.GetStorageDetils();
     }
 
+    ngOnInit() {
+        this.utils.IsAuthenticated();
+        if (!this.utils._isAuthentic) {
+            this.navCtrl.setRoot(LoginPage);
+        }
+    }
+    
     GetSummaryCounts() {
         this.dashBoardService.GetSummaryCounts()
             .subscribe((resp) => {
@@ -42,7 +49,8 @@ export class DashBoardMainPage {
         this.dashBoardService.GetStorage()
             .subscribe((resp) => {
                 var jsonResult = JSON.parse(resp['_body']);
-                this.storage = jsonResult.storage;            },
+                this.storage = jsonResult.storage;
+            },
             err => {
                 this.logger.LogError('Erro while fetching storage data');
             });
